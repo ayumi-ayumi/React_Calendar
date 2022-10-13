@@ -1,0 +1,18 @@
+:root {
+  background-color: antiquewhite;
+  font-family: 'Pacifico', cursive;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+}
+
+.month {
+  width: 80px;
+  text-align: center;
+}
+
+button {
+  margin: 0 10px;
+}
