@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
-
-
 import Header from './Header'
+import DaysOfWeek from './DaysOfWeek'
+import Day from './Day';
 
 export default function Calendar(){
     const date = new Date();
     const [monthNumber, setMonthNumber] = useState(date.getMonth());
     const [yearNumber, setYearNumber] = useState(date.getFullYear());
-    // const year = date.getFullYear();
+    const howManyDays = new Date(2022, 10, 0).getDate();
 
     function goToNextMonth() {
         setMonthNumber(()=>{
@@ -32,6 +32,8 @@ export default function Calendar(){
     return (
         <div>
             <Header monthNumber={monthNumber} yearNumber={yearNumber} onClickNextMonth={goToNextMonth} onClickPrevMonth={goToPrevMonth}/>
+            <DaysOfWeek />
+            <Day howManyDays={howManyDays}/>
         </div>
     )
 }
