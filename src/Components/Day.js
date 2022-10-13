@@ -6,23 +6,42 @@ export default function Day (props) {
     const dayArr = []
     const blank =[]
 
+    //creating an array for days of the month
     for(let i=1; i <= props.howManyDays; i++) {
       dayArr.push(<div className='aDay' key={i}>{i}</div>)
       } 
-
+    
+    //filling up days before the first day 
     if(props.dayOfFirstDay===0){
       for(let j=0; j < 6; j++) {
-        blank.push(<div></div>)
+        blank.push(<div className='blank'></div>)
       } 
       dayArr.unshift(blank)
 
     } else {
       for(let j=0; j < props.dayOfFirstDay-1; j++) {
-        blank.push(<div></div>)
+        blank.push(<div className='blank' key={j}></div>)
       } 
       dayArr.unshift(blank)
       
     }
+    
+    //filling up days after the last day 
+    if(props.dayOfLastDay!==0){
+      for(let l=0; l <= 7-props.dayOfLastDay; l++) {
+        blank.push(<div className='blank' key={l+50}></div>)
+      } 
+      dayArr.push(blank)
+
+    } 
+    // else {
+    //   for(let j=0; j < props.dayOfLastDay-1; j++) {
+    //     blank.push(<div key={j}></div>)
+    //   } 
+    //   dayArr.push(blank)
+      
+    // }
+
     
     // if(props.dayOfFirstDay!==1){
     //   for(let j=0; j < props.dayOfFirstDay-1; j++) {
