@@ -49,15 +49,16 @@ button img:active {
   background-color: rgba(240, 248, 255, 0.496);
 }
 
-
-
-
 .daysOfWeek  {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 3px;
   justify-content: center;
   text-align: center;
+}
+
+.daysOfWeekShort {
+  display: none;
 }
 
 .days {
@@ -83,6 +84,17 @@ button img:active {
     line-height: 55px;
     padding: 0;
 }
+  .daysOfWeek  {
+    display: none;
+  }
+
+  .daysOfWeekShort {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 3px;
+    justify-content: center;
+    text-align: center;
+  }
 }
 
 @media(min-width: 481px)and (max-width:780px){
