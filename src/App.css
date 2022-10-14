@@ -1,25 +1,60 @@
 :root {
   background-color: antiquewhite;
   font-family: 'Pacifico', cursive;
+  margin: 50px;
+  box-sizing: border-box;
 }
 
 .header {
+  height: 60px;
   display: flex;
   justify-content: center;
 }
 
 .month {
-  width: 80px;
+  width: 100px;
   text-align: center;
+  line-height: 60px;
+  font-size: 1.3rem;
+}
+
+.month:hover + button{
+  background-color: red;
+}
+
+.year {
+  text-align: center;
+  line-height: 60px;
+  font-size: 1.3rem;
 }
 
 button {
   margin: 0 10px;
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
 }
+
+button img {
+  height: 60%;
+}
+
+button img:hover {
+  background-color: #ade2dd4d;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+button img:active {
+  background-color: rgba(240, 248, 255, 0.496);
+}
+
+
+
 
 .daysOfWeek  {
   display: grid;
-  grid-template-columns: repeat(7,14%);
+  grid-template-columns: repeat(7, 1fr);
   gap: 3px;
   justify-content: center;
   text-align: center;
@@ -27,16 +62,31 @@ button {
 
 .days {
   display: grid;
-  grid-template-columns: repeat(7,14%);
+  grid-template-columns: repeat(7,1fr);
   gap: 3px;
   justify-content: center;
 }
 
 .aDay, .blank {
-  height: 120px;
+  height: 100px;
   border: 1px solid gray;
   border-radius: 5px;
-  background-color: rgba(128, 128, 0, 0.217);
+  background-color: rgb(173 173 112 / 24%);
   padding: 5px 0 0 10px;
 }
 
+@media(max-width: 480px){
+  .aDay, .blank {
+    height: 55px;
+    font-size: 1.2rem;
+    text-align:center;
+    line-height: 55px;
+    padding: 0;
+}
+}
+
+@media(min-width: 481px)and (max-width:780px){
+  .aDay, .blank {
+    height: 80px;
+}
+}
