@@ -1,5 +1,5 @@
 import React from "react";
-import leftArrow from "/Users/Ayumi/Desktop/Frauenloop/React/react_calendar/src/left_arrow.png";//why not relative path works??
+import leftArrow from "/Users/Ayumi/Desktop/Frauenloop/React/react_calendar/src/left_arrow.png"; //why relative path not works??
 import rightArrow from "/Users/Ayumi/Desktop/Frauenloop/React/react_calendar/src/right_arrow.png";
 
 export default function Header(props) {

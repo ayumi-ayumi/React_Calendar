@@ -7,12 +7,11 @@ export default function Calendar(){
     const date = new Date();
     const [monthNumber, setMonthNumber] = useState(date.getMonth());
     const [yearNumber, setYearNumber] = useState(date.getFullYear());
-    const howManyDays = new Date(yearNumber, monthNumber+1, 0).getDate(); //showing the last day in October
+    const howManyDays = new Date(yearNumber, monthNumber+1, 0).getDate(); //showing the last day in a month
     const dayOfFirstDay = new Date(yearNumber,monthNumber,1).getDay();
     const dayOfLastDay = new Date(yearNumber,monthNumber+1,0).getDay();
     
     function goToNextMonth() {
-        console.log(dayOfLastDay)
         setMonthNumber(()=>{
             if(monthNumber + 1 > 11){
                 setYearNumber(yearNumber+1)
