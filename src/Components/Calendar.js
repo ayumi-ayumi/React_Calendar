@@ -10,6 +10,7 @@ export default function Calendar(){
     const howManyDays = new Date(yearNumber, monthNumber+1, 0).getDate(); //showing the last day in a month
     const dayOfFirstDay = new Date(yearNumber,monthNumber,1).getDay();
     const dayOfLastDay = new Date(yearNumber,monthNumber+1,0).getDay();
+    const currentDay = new Date().getDate();
     
     function goToNextMonth() {
         setMonthNumber(()=>{
@@ -35,7 +36,7 @@ export default function Calendar(){
         <div>
             <Header monthNumber={monthNumber} yearNumber={yearNumber} onClickNextMonth={goToNextMonth} onClickPrevMonth={goToPrevMonth}/>
             <DaysOfWeek />
-            <Day howManyDays={howManyDays} dayOfFirstDay={dayOfFirstDay} dayOfLastDay={dayOfLastDay}/>
+            <Day howManyDays={howManyDays} dayOfFirstDay={dayOfFirstDay} dayOfLastDay={dayOfLastDay} currentDay={currentDay} monthNumber={monthNumber}/>
         </div>
     )
 }
