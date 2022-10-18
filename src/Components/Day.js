@@ -3,7 +3,7 @@ import './Day.scss'
 
 export default function Day (props) {
 
-  function showDay () {
+  function makeDayArr () {
     const dayArr = []
 
     //creating an array for days of the month
@@ -34,14 +34,20 @@ export default function Day (props) {
   
   const isCurrentMonth = props.monthNumber === new Date().getMonth();
 
+  const showDays=
+  makeDayArr().map((day, index)=>{
+    return (
+      <div className={`${day.date ? "aDay" : "blank"} 
+      ${(day.date === props.currentDay && isCurrentMonth) && "currentDay" }`} 
+      key={index}>
+      {day.date}
+      </div>
+    )
+  })
+
   return (
     <div className='days'>
-      {showDay().map((day, index)=>{
-
-        return (
-          <div className={`${day.date ? "aDay" : "blank"} ${(day.date === props.currentDay && isCurrentMonth) && "currentDay" }`} key={index}>{day.date}</div>
-        )
-      })}
+    {showDays}
     </div>
   )
 }
