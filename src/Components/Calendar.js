@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import Header from './Header'
 import DaysOfWeek from './DaysOfWeek'
 import Day from './Day';
+import { BrowserRouter, Route, Link, Switch, Routes } from 'react-router-dom'
+
 
 export default function Calendar(){
     const date = new Date();
@@ -34,6 +36,7 @@ export default function Calendar(){
 
     return (
         <div>
+            <Link to="/about">About</Link>
             <Header monthNumber={monthNumber} yearNumber={yearNumber} onClickNextMonth={goToNextMonth} onClickPrevMonth={goToPrevMonth}/>
             <DaysOfWeek />
             <Day howManyDays={howManyDays} dayOfFirstDay={dayOfFirstDay} dayOfLastDay={dayOfLastDay} currentDay={currentDay} monthNumber={monthNumber}/>
