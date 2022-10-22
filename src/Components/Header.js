@@ -1,6 +1,6 @@
 import React from "react";
-import leftArrow from "/Users/Ayumi/Desktop/Frauenloop/React/react_calendar/src/left_arrow.png"; //why relative path not works??
-import rightArrow from "/Users/Ayumi/Desktop/Frauenloop/React/react_calendar/src/right_arrow.png";
+import leftArrow from "../images/left_arrow.png"; 
+import rightArrow from "../images/right_arrow.png";
 
 export default function Header(props) {
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
