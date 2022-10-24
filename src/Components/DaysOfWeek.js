@@ -1,5 +1,5 @@
 import React from 'react'
-import './DaysOfWeek.scss'
+import '../Sass/DaysOfWeek.scss'
 
 export default function DaysOfWeek () {
 

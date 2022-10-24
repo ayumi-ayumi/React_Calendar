@@ -1,0 +1,47 @@
+.header {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+}
+
+.month {
+  width: 100px;
+  text-align: center;
+  line-height: 60px;
+  font-size: 1.3rem;
+}
+
+.month:hover + button {
+  background-color: red;
+}
+
+.year {
+  text-align: center;
+  line-height: 60px;
+  font-size: 1.3rem;
+}
+
+button {
+  margin: 0 10px;
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+}
+
+button img {
+  height: 60%;
+}
+
+button img:hover {
+  background-color: rgba(173, 226, 221, 0.3019607843);
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+button img:active {
+  background-color: rgba(240, 248, 255, 0.496);
+}
+
+.button--add {
+  background-color: salmon;
+}/*# sourceMappingURL=Header.css.map */

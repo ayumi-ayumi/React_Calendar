@@ -36,7 +36,7 @@ export default function Calendar(){
 
     return (
         <div>
-            <Link to="/about">About</Link>
+            <Link to="/todo">Todo list</Link>
             <Header monthNumber={monthNumber} yearNumber={yearNumber} onClickNextMonth={goToNextMonth} onClickPrevMonth={goToPrevMonth}/>
             <DaysOfWeek />
             <Day howManyDays={howManyDays} dayOfFirstDay={dayOfFirstDay} dayOfLastDay={dayOfLastDay} currentDay={currentDay} monthNumber={monthNumber}/>

@@ -1,5 +1,5 @@
 import React from 'react'
-import './Day.scss'
+import '../Sass/Day.scss'
 
 export default function Day (props) {
 

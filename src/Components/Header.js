@@ -1,7 +1,7 @@
 import React from "react";
 import leftArrow from "../images/left_arrow.png"; 
 import rightArrow from "../images/right_arrow.png";
-import './Header.scss'
+import '../Sass/Header.scss'
 
 export default function Header(props) {
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
