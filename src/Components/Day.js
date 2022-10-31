@@ -1,5 +1,6 @@
 import React from 'react'
 import '../Sass/Day.scss'
+import { Link } from 'react-router-dom'
 
 export default function Day (props) {
 
@@ -37,13 +38,16 @@ export default function Day (props) {
   const showDays=
   createDayArr().map((day, index)=>{
     return (
-      <div className={`${day.date ? "aDay" : "blank"} 
-      ${(day.date === props.currentDay && isCurrentMonth) && "currentDay" }`} 
-      key={index}>
-      {day.date}
-      </div>
+      <Link to={`/todo/${day.date}`}>
+        <div className={`${day.date ? "aDay" : "blank"} 
+        ${(day.date === props.currentDay && isCurrentMonth) && "currentDay" }`} 
+        key={index}>
+        {day.date}
+        </div>
+      </Link>
     )
   })
+
 
   return (
     <div className='days'>

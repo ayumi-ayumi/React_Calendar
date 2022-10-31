@@ -1,36 +1,49 @@
 import React from 'react'
+import { useParams } from 'react-router-dom';
 
 export default function Todo () {
+  let {date} = useParams();
   const [list, setList] = React.useState("")
   const [listArr, setListArr] = React.useState([])
 
+  function handleChange(event) {
+    // console.log(event.target.value)
+    setList(prevList => event.target.value)
+  }
 
   function AddList () {
-    console.log(list)
-    listArr.push(list)
-    console.log(listArr)
+    // listArr.push(list)
+    const newListArr = [...listArr, list];
+    setListArr(newListArr)
+    setList("");
+    localStorage.setItem(date, JSON.stringify(newListArr));
+    console.log(newListArr)
   }
 
-  function handleChange(event) {
-    setList(prevList => event.target.value)
-    // console.log(list)
-  }
-
+  React.useEffect (()=> {
+    const newDate = JSON.parse(localStorage.getItem(date))
+    if(newDate) {
+      setListArr(newDate)
+    }
+  }, [])
+  
+  
   return (
     <>
+      <h1>TODO LIST {date}</h1>
       <input
       type="text"
       placeholder="Wake up at 6"
       className="form--addList" 
       onChange={handleChange}
+      value={list}
       />
       <button className='button--add' onClick={AddList}>ADD</button>
-      <h1>TODO LIST</h1>
-      {listArr.map((todo) => (
-              <ul>
-                <li>{todo}</li>
-              </ul>
+      <ul>
+      {listArr.map((todo, index) => (
+                <li key={index}>{todo}</li>
             ))}
+      </ul>
     </>
   )
 }

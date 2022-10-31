@@ -1,4 +1,8 @@
-.header {
+h2 {
+  font-family: "Courier New", Courier, monospace;
+}
+
+.button--month {
   height: 60px;
   display: flex;
   justify-content: center;

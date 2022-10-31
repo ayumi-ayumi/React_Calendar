@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import Header from './Header'
 import DaysOfWeek from './DaysOfWeek'
 import Day from './Day';
-import { BrowserRouter, Route, Link, Switch, Routes } from 'react-router-dom'
-
+import { Link } from 'react-router-dom'
 
 export default function Calendar(){
     const date = new Date();
