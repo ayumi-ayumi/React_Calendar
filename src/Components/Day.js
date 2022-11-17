@@ -1,6 +1,8 @@
 import React from 'react'
-import '../Sass/Day.scss'
+import '../Sass/styles.scss'
+// import '../Sass/day.scss'
 import { Link } from 'react-router-dom'
+import { createDayArr } from 'HelperFunctions/createDayArray';
 
 export default function Day (props) {
 
@@ -32,26 +34,29 @@ export default function Day (props) {
     } 
     return dayArr;
   }
-  
+
   const isCurrentMonth = props.monthNumber === new Date().getMonth();
 
   const showDays=
   createDayArr().map((day, index)=>{
     return (
-      <Link to={`/todo/${day.date}`}>
-        <div className={`${day.date ? "aDay" : "blank"} 
-        ${(day.date === props.currentDay && isCurrentMonth) && "currentDay" }`} 
-        key={index}>
+      <Link to={`/todo/${day.date}`} className={`${day.date ? "aDay" : "blank"} 
+      ${(day.date === props.currentDay && isCurrentMonth) && "currentDay" }`} 
+      key={index}>
         {day.date}
-        </div>
       </Link>
     )
   })
 
+  console.log(props.currentDay)
+  console.log(props.monthNumber)
+  console.log(props.howManyDays)
+  console.log(props.dayOfFirstDay)
+  console.log(props.dayOfLastDay)
 
   return (
     <div className='days'>
-    {showDays}
+      {showDays}
     </div>
   )
 }

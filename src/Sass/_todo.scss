@@ -1,0 +1,38 @@
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+.moreThan5 {
+  background-color: lightblue;
+}
+
+.lessThan5 {
+  background-color: rgb(129, 88, 129);
+}
+
+.button--add {
+  background-color: salmon;
+}
+
+.button--clearLists {
+  background-color: rgba(71, 61, 139, 0.36);
+  padding: 10px;
+  cursor: pointer;
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+}
+
+.material-symbols-outlined {
+  cursor: pointer;
+}
+
+
+

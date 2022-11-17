@@ -1,7 +1,6 @@
 h2 {
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
 }
-
 .button--month {
   height: 60px;
   display: flex;
@@ -15,7 +14,7 @@ h2 {
   font-size: 1.3rem;
 }
 
-.month:hover + button {
+.month:hover + button{
   background-color: red;
 }
 
@@ -37,7 +36,7 @@ button img {
 }
 
 button img:hover {
-  background-color: rgba(173, 226, 221, 0.3019607843);
+  background-color: #ade2dd4d;
   border-radius: 50%;
   transition: 0.3s;
 }
@@ -46,6 +45,3 @@ button img:active {
   background-color: rgba(240, 248, 255, 0.496);
 }
 
-.button--add {
-  background-color: salmon;
-}/*# sourceMappingURL=Header.css.map */
