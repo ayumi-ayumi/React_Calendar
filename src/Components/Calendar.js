@@ -41,7 +41,7 @@ export default function Calendar(props) {
             {/* <Link to="/todo">Todo list</Link> */}
             <CountProvider><Header monthNumber={monthNumber} yearNumber={yearNumber} goToNextMonth={goToNextMonth} goToPrevMonth={goToPrevMonth} /></CountProvider>
             <DaysOfWeek />
-            <CountProvider><Day howManyDays={howManyDays} dayOfFirstDay={dayOfFirstDay} dayOfLastDay={dayOfLastDay} currentDay={currentDay} monthNumber={monthNumber} /></CountProvider>
+            <CountProvider><Day howManyDays={howManyDays} dayOfFirstDay={dayOfFirstDay} dayOfLastDay={dayOfLastDay} currentDay={currentDay} monthNumber={monthNumber} yearNumber={yearNumber}/></CountProvider>
         </div>
     )
 }

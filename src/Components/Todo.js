@@ -4,7 +4,7 @@ import { useCountContext} from '/Users/Ayumi/Desktop/Frauenloop/React/react_cale
 import Day from '/Users/Ayumi/Desktop/Frauenloop/React/react_calendar/src/Components/Day.js'
 
 export default function Todo() {
-  let { date } = useParams();
+  let { date, month, year} = useParams();
   const [task, setTask] = React.useState("")
   const [todoListArr, setTodoListArr] = React.useState([])
   // const [checkBox, setCheckBox] = React.useState(false)
@@ -25,7 +25,7 @@ export default function Todo() {
     const newListArr = [...todoListArr, newTask];
     if (task !== "") setTodoListArr(newListArr)
     setTask("");
-    localStorage.setItem(date, JSON.stringify(newListArr));
+    localStorage.setItem(`${date}-${month}-${year}`, JSON.stringify(newListArr));
   }
 
   function checked (id) {
@@ -33,6 +33,7 @@ export default function Todo() {
 
     const updatedTodoLists = [...todoListArr].map((todo) => {
       if (todo.id === id) {
+        console.log(todo.checked)
         todo.checked = !todo.checked;
         console.log(todo.checked)
       }
@@ -115,7 +116,7 @@ export default function Todo() {
               </label>
             ) : (
               <label>
-                <input type="checkbox" onClick={()=>checked(todo.id)} checked={todo.checkBox}/>
+                <input type="checkbox" onChange={()=>checked(todo.id)} checked={todo.checked}/>
                 {todo.value}
               </label>
             )

@@ -16,7 +16,7 @@ export default function App() {
       <Routes>
         <Route path='/' element={<Calendar />} errorElement={<Notfound />}/>
         
-        <Route path='/todo/:date' 
+        <Route path='/todo/:date/:month/:year' 
         element={<Todo 
         // todoListArr={todoListArr}
         // setTodoListArr={setTodoListArr}

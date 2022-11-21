@@ -10,21 +10,20 @@ export default function Day (props) {
   // const { count, setCount } = useCountContext();
   const [todoListArr, setTodoListArr] = React.useState([1,2,3])
 
-  // const b = JSON.parse(localStorage.getItem(21)).length
-  // console.log(b)
-  // console.log(b.length)
-
-
-
   function createDayArr () {
     const dayArr = []
 
     //creating an array for days of the month
     for(let i=1; i <= props.howManyDays; i++) {
-      console.log(i)
-      const todolength  = JSON.parse(localStorage.getItem(i)) ? JSON.parse(localStorage.getItem(i)).length : 0
-      // console.log(todolength)
-      dayArr.push({value:"day", date: i, todolength:todolength})
+      const listArr = JSON.parse(localStorage.getItem(`${i}-${props.monthNumber}-${props.yearNumber}`)) 
+      console.log(listArr)
+      const todolength  = listArr ? listArr.length : 0
+      const numberOfChecked = listArr ? listArr.filter(todo => todo.checked).length : 0
+      console.log('numberOfChecked', numberOfChecked)
+      // const numberOfChecked = listArr.filter(todo => todo.checked)
+      // console.log(numberOfChecked)
+
+      dayArr.push({value:"day", date: i, todolength:todolength, numberOfChecked:numberOfChecked})
       } 
     
     //filling up with blanks before the first day 
@@ -54,11 +53,12 @@ export default function Day (props) {
   createDayArr().map((day, index)=>{
     console.log(day.todolength)
     return (
-      <Link to={`/todo/${day.date}`} className={`${day.date ? "aDay" : "blank"} 
+      <Link to={`/todo/${day.date}/${props.monthNumber +1}/${props.yearNumber}`} className={`${day.date ? "aDay" : "blank"} 
       ${(day.date === props.currentDay && isCurrentMonth) && "currentDay" }`} 
       key={index}>
         <p>{day.date}</p>
         <p>{day?.todolength}</p>
+        <p>{day?.numberOfChecked}</p>
       </Link>
     )
   })
@@ -70,4 +70,8 @@ export default function Day (props) {
     </div>
   )
 }
+
+
+
+
 
