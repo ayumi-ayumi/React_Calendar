@@ -3,7 +3,6 @@ function sunrise(sunsetSunriseTime) {
   const sunriseHour = sunriseTimeToday.getHours().toString().padStart(2, '0');
   const sunriseMinute = sunriseTimeToday.getMinutes().toString().padStart(2, '0');
   const sunriseTime = sunriseHour + ":" + sunriseMinute
-    console.log(123)
 
   return sunriseTime
 }

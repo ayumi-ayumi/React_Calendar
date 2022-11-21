@@ -1,44 +1,62 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
+import { useCountContext} from '/Users/Ayumi/Desktop/Frauenloop/React/react_calendar/src/context.js'
+import Day from '/Users/Ayumi/Desktop/Frauenloop/React/react_calendar/src/Components/Day.js'
 
 export default function Todo() {
   let { date } = useParams();
   const [task, setTask] = React.useState("")
   const [todoListArr, setTodoListArr] = React.useState([])
+  // const [checkBox, setCheckBox] = React.useState(false)
+  // const [length, setLength] = React.useState()
+  // const { todoListArr, setTodoListArr } = useCountContext();
   
   function handleChange(event) {
     setTask(prevList => event.target.value)
   }
   
-  function AddList(e) {
+  function addList(e) {
     e.preventDefault();
     const newTask = {
       id: Math.floor(Math.random() * 1000),
       value: task,
+      checked: false
     };
     const newListArr = [...todoListArr, newTask];
-    setTodoListArr(newListArr)
     if (task !== "") setTodoListArr(newListArr)
     setTask("");
     localStorage.setItem(date, JSON.stringify(newListArr));
   }
+
+  function checked (id) {
+    // setCheckBox(prev=>!prev)
+
+    const updatedTodoLists = [...todoListArr].map((todo) => {
+      if (todo.id === id) {
+        todo.checked = !todo.checked;
+        console.log(todo.checked)
+      }
+      return todo;
+    });
+    setTodoListArr(updatedTodoLists);
+    localStorage.setItem(date, JSON.stringify(updatedTodoLists));
+  }
   
-  function DeleteTask(id) {
+  function deleteTask(id) {
     const newListArrForDelete = todoListArr.filter((todoListArr) => todoListArr.id !== id)
     setTodoListArr(prev => newListArrForDelete)
-    console.log(newListArrForDelete)
+    localStorage.setItem(date, JSON.stringify(newListArrForDelete));
   }
   
-  function ClearLists() {
+  function clearLists() {
     const confirm = window.confirm("Clear all?");
     if (confirm) localStorage.clear();
-    // if (confirm) return setTodoListArr([]);
     return setTodoListArr([])
   }
-
+  
   const [todoEditing, setTodoEditing] = React.useState(null);
   const [editingText, setEditingText] = React.useState("");
-
+  
   function submitEdits(id) {
     const updatedTodoLists = [...todoListArr].map((todo) => {
       if (todo.id === id) {
@@ -48,6 +66,7 @@ export default function Todo() {
     });
     
     setTodoListArr(updatedTodoLists);
+    localStorage.setItem(date, JSON.stringify(updatedTodoLists));
     setTodoEditing(null);
     setEditingText("");
   }
@@ -60,8 +79,7 @@ export default function Todo() {
   }, [])
 
   const listLength = todoListArr.length
-  console.log(todoEditing)
-
+  
   return (
     <div
       className={`${listLength > 5 ? "moreThan5" : "lessThan5"}`}
@@ -75,29 +93,31 @@ export default function Todo() {
           onChange={handleChange}
           value={task}
         />
-        <button className='button--add' onClick={AddList}>ADD</button>
+        <button className='button--add' onClick={addList}>ADD</button>
       </form>
       <div>Total {listLength} tasks for today</div>
 
-      <button className='button--clearLists' onClick={ClearLists} disabled = { todoListArr.length === 0 }>Clear Lists</button>
+      <button className='button--clearLists' onClick={clearLists} 
+      disabled = { listLength === 0 }
+      >Clear</button>
       <ul>
         {todoListArr.map((todo) => (
           <li key={todo.id} className="list">
             {todoEditing === todo.id ? (
-          <label>
-              <input
-                type="text"
-                placeholder={todo.value}
-                className=""
-                value={editingText}
-                onChange={(e) => setEditingText(e.target.value)}
-              />
-          </label>
+              <label>
+                  <input
+                    type="text"
+                    placeholder={todo.value}
+                    className=""
+                    value={editingText}
+                    onChange={(e) => setEditingText(e.target.value)}
+                  />
+              </label>
             ) : (
-            <label>
-              <input type="checkbox" />
-              {todo.value}
-          </label>
+              <label>
+                <input type="checkbox" onClick={()=>checked(todo.id)} checked={todo.checkBox}/>
+                {todo.value}
+              </label>
             )
             }
             
@@ -105,16 +125,16 @@ export default function Todo() {
 
             {todo.id === todoEditing ? (
               <button onClick={() => submitEdits(todo.id)}>
-                <span class="material-symbols-outlined">done</span>
+                <span className="material-symbols-outlined">done</span>
               </button>
             ) : (
               <button onClick={() => setTodoEditing(todo.id)}>
-                <span class="material-symbols-outlined">edit</span>
+                <span className="material-symbols-outlined">edit</span>
               </button>
             )}
 
-            <button className='button--delete' onClick={() => DeleteTask(todo.id)}>
-              <span class="material-symbols-outlined">delete</span>
+            <button className='button--delete' onClick={() => deleteTask(todo.id)}>
+              <span className="material-symbols-outlined">delete</span>
             </button>
 
             </div>

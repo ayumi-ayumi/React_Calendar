@@ -1,6 +1,10 @@
-h2 {
+body {
+  background-color: antiquewhite;
+  margin: 50px;
+  box-sizing: border-box;
   font-family: 'Courier New', Courier, monospace;
 }
+
 .button--month {
   height: 60px;
   display: flex;
@@ -8,7 +12,7 @@ h2 {
 }
 
 .month {
-  width: 100px;
+  width: 130px;
   text-align: center;
   line-height: 60px;
   font-size: 1.3rem;

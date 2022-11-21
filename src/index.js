@@ -7,25 +7,25 @@ import Todo from 'Components/Todo'
 import Article from 'Components/Article'
 import Notfound from 'Components/Notfound'
 
-const router = createBrowserRouter([
-  {path:'/',
-  element: (<Calendar />),
-  errorElement: (<Notfound />)
-  },
-  {path:'/todo/:date',
-  element: (<Todo />)
-  },
-  {path:'/article/:number',
-  element: (<Article />)
-  }
-])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router} />
-  )
-  
-  {/* <React.StrictMode>
+  // <RouterProvider router={router} />
+  <React.StrictMode>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </React.StrictMode> */}
+  </React.StrictMode>
+  )
+  
+// const router = createBrowserRouter([
+//   {path:'/',
+//   element: (<Calendar />),
+//   errorElement: (<Notfound />)
+//   },
+//   {path:'/todo/:date',
+//   element: (<Todo />)
+//   },
+//   {path:'/article/:number',
+//   element: (<Article />)
+//   }
+// ])
