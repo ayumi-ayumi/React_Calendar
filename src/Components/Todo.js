@@ -85,7 +85,7 @@ export default function Todo() {
     <div
       className={`${listLength > 5 ? "moreThan5" : "lessThan5"}`}
     >
-      <h1>TODO LIST {date}</h1>
+      <h1>TODO LIST {date} {month} {year}</h1>
       <form>
         <input
           type="text"

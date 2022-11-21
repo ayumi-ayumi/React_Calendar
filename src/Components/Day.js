@@ -53,7 +53,7 @@ export default function Day (props) {
   createDayArr().map((day, index)=>{
     console.log(day.todolength)
     return (
-      <Link to={`/todo/${day.date}/${props.monthNumber +1}/${props.yearNumber}`} className={`${day.date ? "aDay" : "blank"} 
+      <Link to={`/todo/${day.date}/${props.monthNumber}/${props.yearNumber}`} className={`${day.date ? "aDay" : "blank"} 
       ${(day.date === props.currentDay && isCurrentMonth) && "currentDay" }`} 
       key={index}>
         <p>{day.date}</p>
