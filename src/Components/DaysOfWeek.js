@@ -5,16 +5,18 @@ import '../Sass/styles.scss'
 export default function DaysOfWeek () {
 
   const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-  const htmlDays = days.map((day)=>{
+  const id = Math.floor(Math.random() * 1000000)
+  const htmlDays = days.map((day, index)=>{
+
     return (
-      <div>{day}</div>
+      <div key={day+index}>{day}</div>
     )
   })
   
   const daysShort = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
-  const htmldaysShort = daysShort.map((day)=>{
+  const htmldaysShort = daysShort.map((day, index)=>{
     return (
-      <div>{day}</div>
+      <div key={day+index}>{day}</div>
     )
   })
 

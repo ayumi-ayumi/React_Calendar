@@ -1,13 +1,8 @@
 import React from 'react'
 import '../Sass/styles.scss'
-// import '../Sass/day.scss'
 import { Link } from 'react-router-dom'
-import { createDayArr } from 'HelperFunctions/createDayArray';
-// import { useCountContext} from '/Users/Ayumi/Desktop/Frauenloop/React/react_calendar/src/context.js'
 
 export default function Day (props) {
-  // const { todoListArr, setTodoListArr } = useCountContext();
-  // const { count, setCount } = useCountContext();
   const [todoListArr, setTodoListArr] = React.useState([1,2,3])
 
   function createDayArr () {
@@ -16,14 +11,11 @@ export default function Day (props) {
     //creating an array for days of the month
     for(let i=1; i <= props.howManyDays; i++) {
       const listArr = JSON.parse(localStorage.getItem(`${i}-${props.monthNumber}-${props.yearNumber}`)) 
-      console.log(listArr)
       const todolength  = listArr ? listArr.length : 0
       const numberOfChecked = listArr ? listArr.filter(todo => todo.checked).length : 0
-      console.log('numberOfChecked', numberOfChecked)
-      // const numberOfChecked = listArr.filter(todo => todo.checked)
-      // console.log(numberOfChecked)
+      const ratioOfDone = (numberOfChecked/todolength) ?  (numberOfChecked/todolength) : 0
 
-      dayArr.push({value:"day", date: i, todolength:todolength, numberOfChecked:numberOfChecked})
+      dayArr.push({value:"day", date: i, todolength:todolength, numberOfChecked:numberOfChecked, ratioOfDone:ratioOfDone})
       } 
     
     //filling up with blanks before the first day 
@@ -46,28 +38,43 @@ export default function Day (props) {
     } 
     return dayArr;
   }
-  // console.log(props.listLength)
-  const isCurrentMonth = props.monthNumber === new Date().getMonth();
+
+  const isCurrentMonth = props.monthNumber -1 === new Date().getMonth();
 
   const showDays=
   createDayArr().map((day, index)=>{
-    console.log(day.todolength)
+    // console.log(day)  
+    const condition = day.ratioOfDone >= 0.8 ? 'eighty' : 
+                      day.ratioOfDone >= 0.6 ? 'sixty' : 
+                      day.ratioOfDone >= 0.4 ? 'fourty' : 
+                      day.ratioOfDone >= 0.2 ? 'twenty' : 
+                      "zero";   
     return (
-      <Link to={`/todo/${day.date}/${props.monthNumber}/${props.yearNumber}`} className={`${day.date ? "aDay" : "blank"} 
-      ${(day.date === props.currentDay && isCurrentMonth) && "currentDay" }`} 
+      <Link 
+      to={`/todo/${day.date}/${props.monthNumber}/${props.yearNumber}`} className={`${day.date ? "aDay" : "blank"} 
+      ${(day.date === props.currentDay && isCurrentMonth) && "currentDay"}
+      ${condition}`} 
       key={index}>
         <p>{day.date}</p>
-        <p>{day?.todolength}</p>
-        <p>{day?.numberOfChecked}</p>
       </Link>
     )
   })
 
   return (
+    <>
     <div className='days'>
-      {/* <h5>{todoListArr}</h5> */}
       {showDays}
     </div>
+    <div className='colorChart'>
+      <div>less</div>
+      <div className='colorChartBox zero'></div>
+      <div className='colorChartBox twenty'></div>
+      <div className='colorChartBox fourty'></div>
+      <div className='colorChartBox sixty'></div>
+      <div className='colorChartBox eighty'></div>
+      <div>more</div>
+    </div>
+    </>
   )
 }
 

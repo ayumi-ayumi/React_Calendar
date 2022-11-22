@@ -1,15 +1,11 @@
 import React from 'react'
-import { useParams } from 'react-router-dom';
-import { useCountContext} from '/Users/Ayumi/Desktop/Frauenloop/React/react_calendar/src/context.js'
-import Day from '/Users/Ayumi/Desktop/Frauenloop/React/react_calendar/src/Components/Day.js'
+import { Link, useParams } from 'react-router-dom';
 
 export default function Todo() {
   let { date, month, year} = useParams();
+  const registeredDate = `${date}-${month}-${year}`
   const [task, setTask] = React.useState("")
   const [todoListArr, setTodoListArr] = React.useState([])
-  // const [checkBox, setCheckBox] = React.useState(false)
-  // const [length, setLength] = React.useState()
-  // const { todoListArr, setTodoListArr } = useCountContext();
   
   function handleChange(event) {
     setTask(prevList => event.target.value)
@@ -24,13 +20,12 @@ export default function Todo() {
     };
     const newListArr = [...todoListArr, newTask];
     if (task !== "") setTodoListArr(newListArr)
+    console.log(newListArr)
     setTask("");
-    localStorage.setItem(`${date}-${month}-${year}`, JSON.stringify(newListArr));
+    localStorage.setItem(registeredDate, JSON.stringify(newListArr));
   }
 
   function checked (id) {
-    // setCheckBox(prev=>!prev)
-
     const updatedTodoLists = [...todoListArr].map((todo) => {
       if (todo.id === id) {
         console.log(todo.checked)
@@ -40,13 +35,13 @@ export default function Todo() {
       return todo;
     });
     setTodoListArr(updatedTodoLists);
-    localStorage.setItem(date, JSON.stringify(updatedTodoLists));
+    localStorage.setItem(registeredDate, JSON.stringify(updatedTodoLists));
   }
   
   function deleteTask(id) {
     const newListArrForDelete = todoListArr.filter((todoListArr) => todoListArr.id !== id)
     setTodoListArr(prev => newListArrForDelete)
-    localStorage.setItem(date, JSON.stringify(newListArrForDelete));
+    localStorage.setItem(registeredDate, JSON.stringify(newListArrForDelete));
   }
   
   function clearLists() {
@@ -60,20 +55,20 @@ export default function Todo() {
   
   function submitEdits(id) {
     const updatedTodoLists = [...todoListArr].map((todo) => {
-      if (todo.id === id) {
+      if (todo.id === id && editingText !== "") {
         todo.value = editingText;
       }
       return todo;
     });
     
     setTodoListArr(updatedTodoLists);
-    localStorage.setItem(date, JSON.stringify(updatedTodoLists));
+    localStorage.setItem(registeredDate, JSON.stringify(updatedTodoLists));
     setTodoEditing(null);
     setEditingText("");
   }
 
   React.useEffect(() => {
-    const newDate = JSON.parse(localStorage.getItem(date))
+    const newDate = JSON.parse(localStorage.getItem(registeredDate))
     if (newDate) {
       setTodoListArr(newDate)
     }
@@ -82,6 +77,8 @@ export default function Todo() {
   const listLength = todoListArr.length
   
   return (
+    <>
+    <Link to={'/'}>Back to Calendar</Link>
     <div
       className={`${listLength > 5 ? "moreThan5" : "lessThan5"}`}
     >
@@ -143,6 +140,6 @@ export default function Todo() {
         ))}
       </ul>
     </div>
+    </>
   )
 }
-{/* <li key={index}>{todo}</li> */ }

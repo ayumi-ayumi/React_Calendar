@@ -26,6 +26,31 @@
 }
 
 .currentDay {
-  background-color: rgba(255, 0, 0, 0.165);
+  border:2px solid red;
 }
 
+.twenty {
+  background-color: rgb(63 127 191 / 20%);
+}
+.fourty {
+  background-color: rgb(63 127 191 / 40%);
+}
+.sixty {
+  background-color: rgb(63 127 191 / 60%);
+}
+.eighty {
+  background-color: rgb(63 127 191 / 100%);
+}
+
+.colorChart {
+  display: flex;
+  margin: 10px;
+}
+
+.colorChartBox {
+  height: 20px;
+  width: 20px;
+  border-radius: 3px;
+  border: 1px solid gray;
+  margin: 2px;
+}

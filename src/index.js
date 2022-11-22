@@ -8,15 +8,6 @@ import Article from 'Components/Article'
 import Notfound from 'Components/Notfound'
 
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  // <RouterProvider router={router} />
-  <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>
-  )
-  
 // const router = createBrowserRouter([
 //   {path:'/',
 //   element: (<Calendar />),
@@ -29,3 +20,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 //   element: (<Article />)
 //   }
 // ])
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+  )
+  
+    // <React.StrictMode>
+    //   <BrowserRouter>
+    //     <App />
+    //   </BrowserRouter>
+    // </React.StrictMode>
