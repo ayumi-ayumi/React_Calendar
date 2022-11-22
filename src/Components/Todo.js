@@ -28,9 +28,7 @@ export default function Todo() {
   function checked (id) {
     const updatedTodoLists = [...todoListArr].map((todo) => {
       if (todo.id === id) {
-        console.log(todo.checked)
         todo.checked = !todo.checked;
-        console.log(todo.checked)
       }
       return todo;
     });
@@ -98,43 +96,41 @@ export default function Todo() {
       <button className='button--clearLists' onClick={clearLists} 
       disabled = { listLength === 0 }
       >Clear</button>
+      
       <ul>
         {todoListArr.map((todo) => (
           <li key={todo.id} className="list">
-            {todoEditing === todo.id ? (
+            {todo.id === todoEditing ? (
               <label>
                   <input
                     type="text"
                     placeholder={todo.value}
                     className=""
                     value={editingText}
-                    onChange={(e) => setEditingText(e.target.value)}
-                  />
+                    onChange={(e) => setEditingText(e.target.value)}/>
               </label>
             ) : (
-              <label>
+              <div>
                 <input type="checkbox" onChange={()=>checked(todo.id)} checked={todo.checked}/>
-                {todo.value}
-              </label>
+                <label>{todo.value}</label>
+              </div>
             )
             }
             
             <div className="buttons">
+              {todo.id === todoEditing ? (
+                <button onClick={() => submitEdits(todo.id)}>
+                  <span className="material-symbols-outlined">done</span>
+                </button>
+              ) : (
+                <button onClick={() => setTodoEditing(todo.id)}>
+                  <span className="material-symbols-outlined">edit</span>
+                </button>
+              )}
 
-            {todo.id === todoEditing ? (
-              <button onClick={() => submitEdits(todo.id)}>
-                <span className="material-symbols-outlined">done</span>
+              <button className='button--delete' onClick={() => deleteTask(todo.id)}>
+                <span className="material-symbols-outlined">delete</span>
               </button>
-            ) : (
-              <button onClick={() => setTodoEditing(todo.id)}>
-                <span className="material-symbols-outlined">edit</span>
-              </button>
-            )}
-
-            <button className='button--delete' onClick={() => deleteTask(todo.id)}>
-              <span className="material-symbols-outlined">delete</span>
-            </button>
-
             </div>
           </li>
         ))}

@@ -34,5 +34,10 @@ ul li {
   cursor: pointer;
 }
 
+// input[type="checkbox"]:checked + .list label {
+//   text-decoration: line-through;
+// }
 
-
+input[type="checkbox"]:checked + label {
+  text-decoration: line-through;
+}
