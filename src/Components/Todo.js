@@ -20,7 +20,6 @@ export default function Todo() {
     };
     const newListArr = [...todoListArr, newTask];
     if (task !== "") setTodoListArr(newListArr)
-    console.log(newListArr)
     setTask("");
     localStorage.setItem(registeredDate, JSON.stringify(newListArr));
   }
@@ -44,8 +43,11 @@ export default function Todo() {
   
   function clearLists() {
     const confirm = window.confirm("Clear all?");
-    if (confirm) localStorage.clear();
-    return setTodoListArr([])
+    console.log(registeredDate)
+    if (confirm) {
+     localStorage.removeItem(registeredDate);
+      setTodoListArr([])
+    }
   }
   
   const [todoEditing, setTodoEditing] = React.useState(null);
@@ -77,9 +79,7 @@ export default function Todo() {
   return (
     <>
     <Link to={'/'}>Back to Calendar</Link>
-    <div
-      className={`${listLength > 5 ? "moreThan5" : "lessThan5"}`}
-    >
+    <div>
       <h1>TODO LIST {date} {month} {year}</h1>
       <form>
         <input
@@ -100,7 +100,7 @@ export default function Todo() {
       <ul>
         {todoListArr.map((todo) => (
           <li key={todo.id} className="list">
-            {todo.id === todoEditing ? (
+            {todo.id === todoEditing? (
               <label>
                   <input
                     type="text"
@@ -111,8 +111,12 @@ export default function Todo() {
               </label>
             ) : (
               <div>
-                <input type="checkbox" onChange={()=>checked(todo.id)} checked={todo.checked}/>
-                <label>{todo.value}</label>
+                <input 
+                  type="checkbox" 
+                  onChange={()=>checked(todo.id)} 
+                  checked={todo.checked}
+                  id={`${todo.id}`}/>
+                <label for={`${todo.id}`}>{todo.value}</label>
               </div>
             )
             }
