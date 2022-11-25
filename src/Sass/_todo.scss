@@ -2,17 +2,46 @@
   font-family: "Montserrat", sans-serif;
 }
 
+.todo--body {
+  margin: auto 100px;
+}
+
 ul li {
   list-style-type: none;
 }
 
+.form--addList {
+  width: 85%;
+  height: 40px;
+  font-size: 18px;
+}
+
 .button--add {
-  background-color: salmon;
+  background-color: #2ec4b6db;
+  height: 35px;
+  padding: 12px;
+  line-height: 12px;
+  border-radius: 3px;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.button--add:hover {
+  background-color: #011614;
+  transition: 0.3s;
 }
 
 .button--clearLists {
-  background-color: rgba(71, 61, 139, 0.36);
-  padding: 10px;
+  background-color: #fa8072ad;
+  height: 35px;
+  width: 20%;
+  padding: 12px;
+  line-height: 12px;
+  border-radius: 3px;
+  font-weight: 900;
+  margin: 20px 0;
   cursor: pointer;
 }
 
@@ -20,22 +49,39 @@ ul li {
   display: flex;
   justify-content: space-between;
   width: 60%;
+  background-color: #ffffffdb;
+  height: 40px;
+  font-size: 18px;
+  line-height: 18px;
+  border-radius: 3px;
+  margin: 0 auto 5px;
 }
 
 .material-symbols-outlined {
+  height: 40px;
+  line-height: 40px;
   cursor: pointer;
 }
 
-// input[type="checkbox"]:checked + .list label {
-//   text-decoration: line-through;
-// }
+.editingText {
+  height: 35px;
+  font-size: 18px;
+  margin: 2px;
+}
+
+input[type="text"]:focus {
+  border-color: dodgerBlue;
+  box-shadow: 0 0 8px 0 dodgerBlue;
+  transition: 0.3s;
+}
 
 input[type="checkbox"]:checked + label {
   text-decoration: line-through;
 }
 
-
-input[type="checkbox"] { display: none; }
+input[type="checkbox"] {
+  display: none;
+}
 
 input[type="checkbox"] + label {
   display: block;
@@ -44,28 +90,31 @@ input[type="checkbox"] + label {
   margin-bottom: 20px;
   cursor: pointer;
   -webkit-user-select: none;
+  line-height: 40px;
 }
 
-input[type="checkbox"] + label:last-child { margin-bottom: 0; }
+input[type="checkbox"] + label:last-child {
+  margin-bottom: 0;
+}
 
 input[type="checkbox"] + label:before {
-  content: '';
+  content: "";
   display: block;
   width: 20px;
   height: 20px;
   border: 1px solid #6cc0e5;
   position: absolute;
-  left: 0;
-  top: 0;
-  opacity: .6;
-  -webkit-transition: all .12s, border-color .08s;
-  transition: all .12s, border-color .08s;
+  left: 6px;
+  top: 10px;
+  opacity: 0.6;
+  -webkit-transition: all 0.12s, border-color 0.08s;
+  transition: all 0.12s, border-color 0.08s;
 }
 
 input[type="checkbox"]:checked + label:before {
   width: 10px;
-  top: -5px;
-  left: 5px;
+  top: 5px;
+  left: 12px;
   border-radius: 0;
   opacity: 1;
   border-top-color: transparent;

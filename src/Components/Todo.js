@@ -81,64 +81,65 @@ export default function Todo() {
     <Link to={'/'}>Back to Calendar</Link>
     <div>
       <h1>TODO LIST {date} {month} {year}</h1>
-      <form>
-        <input
-          type="text"
-          placeholder="Wake up at 6"
-          className="form--addList"
-          onChange={handleChange}
-          value={task}
-        />
-        <button className='button--add' onClick={addList}>ADD</button>
-      </form>
-      <div>Total {listLength} tasks for today</div>
+      <div className='todo--body'>
+        <form>
+          <input
+            type="text"
+            placeholder="Wake up at 6"
+            className="form--addList"
+            onChange={handleChange}
+            value={task}/>
+          <button className='button--add' onClick={addList}>ADD</button>
+        </form>
+        <div>Total {listLength} tasks for today</div>
 
-      <button className='button--clearLists' onClick={clearLists} 
-      disabled = { listLength === 0 }
-      >Clear</button>
-      
-      <ul>
-        {todoListArr.map((todo) => (
-          <li key={todo.id} className="list">
-            {todo.id === todoEditing? (
-              <label>
-                  <input
-                    type="text"
-                    placeholder={todo.value}
-                    className=""
-                    value={editingText}
-                    onChange={(e) => setEditingText(e.target.value)}/>
-              </label>
-            ) : (
-              <div>
-                <input 
-                  type="checkbox" 
-                  onChange={()=>checked(todo.id)} 
-                  checked={todo.checked}
-                  id={`${todo.id}`}/>
-                <label for={`${todo.id}`}>{todo.value}</label>
-              </div>
-            )
-            }
-            
-            <div className="buttons">
-              {todo.id === todoEditing ? (
-                <button onClick={() => submitEdits(todo.id)}>
-                  <span className="material-symbols-outlined">done</span>
-                </button>
+        <button className='button--clearLists' onClick={clearLists} 
+        disabled = { listLength === 0 }
+        >Clear</button>
+        
+        <ul>
+          {todoListArr.map((todo) => (
+            <li key={todo.id} className="list">
+              {todo.id === todoEditing? (
+                <label>
+                    <input
+                      type="text"
+                      placeholder={todo.value}
+                      className="editingText"
+                      value={editingText}
+                      onChange={(e) => setEditingText(e.target.value)}/>
+                </label>
               ) : (
-                <button onClick={() => setTodoEditing(todo.id)}>
-                  <span className="material-symbols-outlined">edit</span>
-                </button>
-              )}
+                <div>
+                  <input 
+                    type="checkbox" 
+                    onChange={()=>checked(todo.id)} 
+                    checked={todo.checked}
+                    id={`${todo.id}`}/>
+                  <label for={`${todo.id}`}>{todo.value}</label>
+                </div>
+              )
+              }
+              
+              <div className="buttons">
+                {todo.id === todoEditing ? (
+                  <button onClick={() => submitEdits(todo.id)}>
+                    <span className="material-symbols-outlined">done</span>
+                  </button>
+                ) : (
+                  <button onClick={() => setTodoEditing(todo.id)}>
+                    <span className="material-symbols-outlined">edit</span>
+                  </button>
+                )}
 
-              <button className='button--delete' onClick={() => deleteTask(todo.id)}>
-                <span className="material-symbols-outlined">delete</span>
-              </button>
-            </div>
-          </li>
-        ))}
-      </ul>
+                <button className='button--delete' onClick={() => deleteTask(todo.id)}>
+                  <span className="material-symbols-outlined">delete</span>
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
     </>
   )
