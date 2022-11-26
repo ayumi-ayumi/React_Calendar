@@ -1,6 +1,8 @@
 import React from 'react'
 import '../Sass/styles.scss'
 import { Link } from 'react-router-dom'
+import done from '../images/icons8-checkmark-50.png'
+import notDone from '../images/icons8-cancel-50.png'
 
 export default function Day (props) {
   function createDayArr () {
@@ -46,6 +48,8 @@ export default function Day (props) {
                       day.ratioOfDone >= 0.4 ? 'fourty' : 
                       day.ratioOfDone >= 0.2 ? 'twenty' : 
                       "zero";   
+    const todolength = day.todolength
+    const checked = day.numberOfChecked
     if (day.type === "day") {
       return (
         <Link 
@@ -53,7 +57,11 @@ export default function Day (props) {
         ${(day.date === props.currentDay && isCurrentMonth) && "currentDay"}
         ${condition}`} 
         key={index}>
-          <p>{day.date}</p>
+          <div className='date'>{day.date}</div>
+          {todolength !== 0 && 
+          <div className='done'><img src={done} />{checked}</div>}
+          {todolength !== 0 && 
+          <div className='notDone'><img src={notDone}/>{todolength-checked}</div>}
         </Link>
       )
     } else if (day.type === "padding") {

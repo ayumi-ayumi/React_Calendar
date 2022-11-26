@@ -11,16 +11,16 @@ export default function Header(props) {
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const adviceSlip = useFetchAdviceslip()
     const { sunriseTime, sunsetTime } = useFetchSuntime()
-    
+
     return (
         <div>
             <h2>{adviceSlip}</h2>
             <div className="suntime">
-                <img src={sunrise} />
+                <img src={sunrise} alt="sunrise"/>
                 <p>Sunrise {sunriseTime}</p>
             </div>
             <div className="suntime">
-                <img src={sunset} />
+                <img src={sunset} alt="sunset"/>
                 <p>Sunset {sunsetTime}</p>
             </div>
             <div className="button--month">

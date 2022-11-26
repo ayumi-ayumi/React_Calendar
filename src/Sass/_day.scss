@@ -1,9 +1,12 @@
 h2 {
   font-size: 1rem;
+  text-align: right;
+
   @media(max-width: 480px){
     font-size: 0.8rem;
     }
 }
+
 .aDay, .blank {
   height: 100px;
   border-radius: 5px;
@@ -23,7 +26,7 @@ h2 {
   }
 }
 
-.aDay p {
+.date {
   line-height: 40px;
   margin: 0;
   font-size: 1.1rem;
@@ -38,6 +41,11 @@ h2 {
 
 .aDay:visited, .aDay:link {
   color: black
+}
+
+.done img, .notDone img {
+  height: 20px;
+  width: 20px;
 }
 
 .days {
