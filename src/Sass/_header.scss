@@ -3,8 +3,16 @@
 }
 
 body {
-  background-color: #fffde9;
   margin: 50px;
+  background-color: #fffde9;
+  font-family: "Montserrat", sans-serif;
+
+  @media(max-width: 480px) {
+    margin: 20px;
+  }
+  @media(min-width: 960px) {
+    margin: 50px 120px;
+  }
 }
 
 .suntime {

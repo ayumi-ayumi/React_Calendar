@@ -1,16 +1,18 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom';
+import done from '../images/icons8-ok-48.png'
+import notDone from '../images/icons8-cancel-48.png'
 
 export default function Todo() {
-  let { date, month, year} = useParams();
+  let { date, month, year } = useParams();
   const registeredDate = `${date}-${month}-${year}`
   const [task, setTask] = React.useState("")
   const [todoListArr, setTodoListArr] = React.useState([])
-  
+
   function handleChange(event) {
     setTask(prevList => event.target.value)
   }
-  
+
   function addList(e) {
     e.preventDefault();
     const newTask = {
@@ -24,7 +26,7 @@ export default function Todo() {
     localStorage.setItem(registeredDate, JSON.stringify(newListArr));
   }
 
-  function checked (id) {
+  function checked(id) {
     const updatedTodoLists = [...todoListArr].map((todo) => {
       if (todo.id === id) {
         todo.checked = !todo.checked;
@@ -34,25 +36,25 @@ export default function Todo() {
     setTodoListArr(updatedTodoLists);
     localStorage.setItem(registeredDate, JSON.stringify(updatedTodoLists));
   }
-  
+
   function deleteTask(id) {
     const newListArrForDelete = todoListArr.filter((todoListArr) => todoListArr.id !== id)
     setTodoListArr(prev => newListArrForDelete)
     localStorage.setItem(registeredDate, JSON.stringify(newListArrForDelete));
   }
-  
+
   function clearLists() {
     const confirm = window.confirm("Clear all?");
     console.log(registeredDate)
     if (confirm) {
-     localStorage.removeItem(registeredDate);
+      localStorage.removeItem(registeredDate);
       setTodoListArr([])
     }
   }
-  
+
   const [todoEditing, setTodoEditing] = React.useState(null);
   const [editingText, setEditingText] = React.useState("");
-  
+
   function submitEdits(id) {
     const updatedTodoLists = [...todoListArr].map((todo) => {
       if (todo.id === id && editingText !== "") {
@@ -60,7 +62,7 @@ export default function Todo() {
       }
       return todo;
     });
-    
+
     setTodoListArr(updatedTodoLists);
     localStorage.setItem(registeredDate, JSON.stringify(updatedTodoLists));
     setTodoEditing(null);
@@ -75,78 +77,93 @@ export default function Todo() {
   }, [])
 
   const listLength = todoListArr.length
-  
+  const numberOfChecked = todoListArr ? todoListArr.filter(todo => todo.checked).length : 0
+  const numberOfNotChecked = listLength - numberOfChecked
+
   return (
     <>
-    <Link to={'/'} className="backToHome">Back to Calendar</Link>
-    <div>
-      <div className="header--todo">
-        <h1>Things To Do</h1>
-        <div>{date}.{month}.{year}</div> 
-      </div>
-      <div className='body--todo'>
-        <form>
-          <input
-            type="text"
-            placeholder="Wake up at 6"
-            className="form--addList"
-            onChange={handleChange}
-            value={task}/>
-          <button className='button--add' onClick={addList}>ADD</button>
-        </form>
+      <Link to={'/'} className="backToHome">Back to Calendar</Link>
+      <div className='main--todo'>
+        <div className="header--todo">
+          <h1>Things To Do</h1>
+          <div>{date}.{month}.{year}</div>
+        </div>
+        <div className='body--todo'>
+          <form>
+            <input
+              type="text"
+              placeholder="Wake up at 6"
+              className="form--addList"
+              onChange={handleChange}
+              value={task} />
+            <button className='button--add' onClick={addList}>ADD</button>
+          </form>
 
-        { listLength !== 0 &&
-        <button className='button--clearLists' onClick={clearLists} 
-        disabled = { listLength === 0 }
-        >Clear</button>
+          {listLength !== 0 &&
+            <button className='button--clearLists' onClick={clearLists}
+              disabled={listLength === 0}
+            >Clear</button>
 
-        }
-        
-        <ul>
-          <div className='showingTotal'>Total {listLength} tasks for today</div>
-          {todoListArr.map((todo) => (
-            <li key={todo.id} className="list">
-              {todo.id === todoEditing? (
-                <label>
+          }
+
+          <ul>
+            {listLength !== 0 &&
+              <div className='showingTotal'>
+                <div className='showingTotal--number'>Total {listLength} tasks for today</div>
+                <div className='numberOfChecked'>
+                  <img src={done} />
+                  <span>{numberOfChecked}</span>
+                </div>
+                <div className='numberOfNotChecked'>
+                  <img src={notDone} />
+                  <span>{numberOfNotChecked}</span>
+                </div>
+              </div>
+            }
+
+            {todoListArr.map((todo) => (
+              <li key={todo.id} className="list">
+                {todo.id === todoEditing ? (
+                  <label>
                     <input
                       type="text"
                       placeholder={todo.value}
                       className="editingText"
                       value={editingText}
-                      onChange={(e) => setEditingText(e.target.value)}/>
-                </label>
-              ) : (
-                <div>
-                  <input 
-                    type="checkbox" 
-                    onChange={()=>checked(todo.id)} 
-                    checked={todo.checked}
-                    id={`${todo.id}`}/>
-                  <label for={`${todo.id}`}>{todo.value}</label>
-                </div>
-              )
-              }
-              
-              <div className="buttons">
-                {todo.id === todoEditing ? (
-                  <button onClick={() => submitEdits(todo.id)}>
-                    <span className="material-symbols-outlined">done</span>
-                  </button>
+                      onChange={(e) => setEditingText(e.target.value)} />
+                  </label>
                 ) : (
-                  <button onClick={() => setTodoEditing(todo.id)}>
-                    <span className="material-symbols-outlined">edit</span>
-                  </button>
-                )}
+                  <div>
+                    <input
+                      type="checkbox"
+                      onChange={() => checked(todo.id)}
+                      checked={todo.checked}
+                      id={`${todo.id}`} />
+                    <label for={`${todo.id}`}>{todo.value}</label>
+                  </div>
+                )
+                }
 
-                <button className='button--delete' onClick={() => deleteTask(todo.id)}>
-                  <span className="material-symbols-outlined">delete</span>
-                </button>
-              </div>
-            </li>
-          ))}
-        </ul>
+                <div className="buttons">
+                  {todo.id === todoEditing ? (
+                    <button onClick={() => submitEdits(todo.id)}>
+                      <span className="material-symbols-outlined">done</span>
+                    </button>
+                  ) : (
+                    <button onClick={() => setTodoEditing(todo.id)}>
+                      <span className="material-symbols-outlined">edit</span>
+                    </button>
+                  )}
+
+                  <button className='button--delete' onClick={() => deleteTask(todo.id)}>
+                    <span className="material-symbols-outlined">delete</span>
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-    </div>
     </>
   )
 }
