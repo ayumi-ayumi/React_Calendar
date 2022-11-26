@@ -16,6 +16,10 @@
   padding: 10px;
   border-radius: 50px;
   color: #fff;
+
+  @media(max-width: 480px) {
+    font-size: 0.7rem;
+  }
 }
 
 .backToHome:hover {
@@ -130,10 +134,15 @@ form {
 }
 
 .form--addList {
-  width: 85%;
+  width: 83%;
   height: 40px;
   font-size: 18px;
-
+  
+  @media(max-width: 480px) {
+    width: 80%;
+    height: 35px;
+    font-size: 0.9rem;
+  }
   @media(max-width: 790px) {
     width: 75%;
   }
@@ -148,6 +157,13 @@ form {
   color: #fff;
   letter-spacing: 0.8px;
   cursor: pointer;
+  
+  @media(max-width: 480px) {
+    height: 35px;
+    font-size: 0.9rem;
+    padding: 7px;
+    font-weight: 500;
+  }
 }
 
 .button--add:hover {
