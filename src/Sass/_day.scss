@@ -1,22 +1,43 @@
-
+h2 {
+  font-size: 1rem;
+  @media(max-width: 480px){
+    font-size: 0.8rem;
+    }
+}
 .aDay, .blank {
   height: 100px;
-  // border: 1px solid gray;
   border-radius: 5px;
-  background-color: rgb(173 173 112 / 24%);
+  background-color: #e5e5e5;
   padding: 5px 0 0 10px;
+  text-decoration: none;
+
 
   @media(max-width: 480px){
-      height: 55px;
-      font-size: 1.2rem;
-      text-align:center;
-      line-height: 55px;
-      padding: 0;
-  }
-  
+    height: 55px;
+    text-align:center;
+    padding: 0;
+    }
+    
   @media(min-width: 481px) and (max-width:780px){
-      height: 80px;
+    height: 80px;
   }
+}
+
+.aDay p {
+  line-height: 40px;
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+
+  @media(max-width: 480px){
+    line-height: 40px;
+    margin: 0;
+    font-size: 0.9rem;
+  }
+}
+
+.aDay:visited, .aDay:link {
+  color: black
 }
 
 .days {
@@ -31,21 +52,22 @@
 }
 
 .twenty {
-  background-color: rgb(63 127 191 / 20%);
+  background-color: rgb(151 63 191 / 20%);
 }
 .fourty {
-  background-color: rgb(63 127 191 / 40%);
+  background-color: rgb(151 63 191 / 40%);
 }
 .sixty {
-  background-color: rgb(63 127 191 / 60%);
+  background-color: rgb(151 63 191 / 60%);
 }
 .eighty {
-  background-color: rgb(63 127 191 / 100%);
+  background-color: rgb(151 63 191 / 100%);
 }
 
 .colorChart {
   display: flex;
   margin: 10px;
+  line-height: 24px;
 }
 
 .colorChartBox {

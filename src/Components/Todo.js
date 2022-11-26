@@ -78,10 +78,13 @@ export default function Todo() {
   
   return (
     <>
-    <Link to={'/'}>Back to Calendar</Link>
+    <Link to={'/'} className="backToHome">Back to Calendar</Link>
     <div>
-      <h1>TODO LIST {date} {month} {year}</h1>
-      <div className='todo--body'>
+      <div className="header--todo">
+        <h1>Things To Do</h1>
+        <div>{date}.{month}.{year}</div> 
+      </div>
+      <div className='body--todo'>
         <form>
           <input
             type="text"
@@ -91,13 +94,16 @@ export default function Todo() {
             value={task}/>
           <button className='button--add' onClick={addList}>ADD</button>
         </form>
-        <div>Total {listLength} tasks for today</div>
 
+        { listLength !== 0 &&
         <button className='button--clearLists' onClick={clearLists} 
         disabled = { listLength === 0 }
         >Clear</button>
+
+        }
         
         <ul>
+          <div className='showingTotal'>Total {listLength} tasks for today</div>
           {todoListArr.map((todo) => (
             <li key={todo.id} className="list">
               {todo.id === todoEditing? (

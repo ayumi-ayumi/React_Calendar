@@ -3,14 +3,15 @@ function sunrise(sunsetSunriseTime) {
   const sunriseHour = sunriseTimeToday.getHours().toString().padStart(2, '0');
   const sunriseMinute = sunriseTimeToday.getMinutes().toString().padStart(2, '0');
   const sunriseTime = sunriseHour + ":" + sunriseMinute
-
+  
+  console.log(sunriseMinute)
   return sunriseTime
 }
 
- function sunset(sunsetSunriseTime) {
+function sunset(sunsetSunriseTime) {
   const sunsetTimeToday = new Date(sunsetSunriseTime.sunset) 
-  const sunsetHour = sunsetTimeToday.getHours().toString()
-  const sunsetMinute = sunsetTimeToday.getMinutes().toString()
+  const sunsetHour = sunsetTimeToday.getHours().toString().padStart(2, '0');
+  const sunsetMinute = sunsetTimeToday.getMinutes().toString().padStart(2, '0')
   const sunsetTime = sunsetHour + ":" + sunsetMinute
   
   return sunsetTime

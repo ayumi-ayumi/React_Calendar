@@ -3,8 +3,20 @@
 }
 
 body {
-  background-color: #f9fbe7;
+  background-color: #fffde9;
   margin: 50px;
+}
+
+.suntime {
+  height: 30px;
+}
+
+.suntime p {
+  display: inline-block;
+  line-height: 30px;
+  margin: 0 6px;
+  height: 30px;
+  vertical-align: top;
 }
 
 .button--month {
