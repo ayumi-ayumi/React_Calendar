@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import done from '../images/icons8-ok-48.png'
 import notDone from '../images/icons8-cancel-48.png'
 
@@ -45,7 +45,6 @@ export default function Todo() {
 
   function clearLists() {
     const confirm = window.confirm("Clear all?");
-    console.log(registeredDate)
     if (confirm) {
       localStorage.removeItem(registeredDate);
       setTodoListArr([])
@@ -76,13 +75,29 @@ export default function Todo() {
     }
   }, [])
 
+  const monthInt = parseInt(month)
+  const yearInt = parseInt(year)
+
   const listLength = todoListArr.length
   const numberOfChecked = todoListArr ? todoListArr.filter(todo => todo.checked).length : 0
   const numberOfNotChecked = listLength - numberOfChecked
+  // let navigator = useNavigate();
+  // let goBack = () => {
+  //   navigator(-1);
+  // };
+
+  // const navigate = useNavigate();
+  // const backToHome = (e) => {
+  //   e.preventDefault();
+  //   navigate("/", { state: { month: monthInt-1, year:  yearInt }, replace: false });
+  // };
 
   return (
     <>
-      <Link to={'/'} className="backToHome">Back to Calendar</Link>
+      {/* <button onClick={backToHome}>Back to Calendar</button> */}
+      <Link to={'/'} 
+      state={{ month: monthInt-1, year:  yearInt}} 
+      className="backToHome">Back to Calendar</Link>
       <div className='main--todo'>
         <div className="header--todo">
           <h1>Things To Do</h1>
@@ -139,7 +154,7 @@ export default function Todo() {
                       onChange={() => checked(todo.id)}
                       checked={todo.checked}
                       id={`${todo.id}`} />
-                    <label for={`${todo.id}`}>{todo.value}</label>
+                    <label htmlFor={`${todo.id}`}>{todo.value}</label>
                   </div>
                 )
                 }

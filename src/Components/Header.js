@@ -26,12 +26,16 @@ export default function Header(props) {
             <div className="button--month">
                 <button onClick={props.goToPrevMonth}><img src={leftArrow} alt="left_arrow" /></button>
                 <div className="month">
+                    {[props.monthNumber]}
                     {months[props.monthNumber]}
                 </div>
                 <div className="year">
                     {props.yearNumber}
                 </div>
                 <button onClick={props.goToNextMonth}><img src={rightArrow} alt="left_arrow" /></button>
+            </div>
+            <div>
+                <button onClick={props.goToToday} className="button--today">Today</button>
             </div>
         </div>
     )

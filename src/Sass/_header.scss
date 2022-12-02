@@ -71,3 +71,11 @@ button img:active {
   background-color: rgba(240, 248, 255, 0.496);
 }
 
+.button--today {
+  background-color: bisque;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid;
+  display: flex;
+  margin: 5px auto;
+}

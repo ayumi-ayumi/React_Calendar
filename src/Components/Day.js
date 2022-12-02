@@ -1,6 +1,6 @@
 import React from 'react'
 import '../Sass/styles.scss'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import done from '../images/icons8-ok-48.png'
 import notDone from '../images/icons8-cancel-48.png'
 
@@ -15,7 +15,14 @@ export default function Day (props) {
       const numberOfChecked = listArr ? listArr.filter(todo => todo.checked).length : 0
       const ratioOfDone = (numberOfChecked/todolength) ?  (numberOfChecked/todolength) : 0
 
-      dayArr.push({type:"day", date: i, todolength:todolength, numberOfChecked:numberOfChecked, ratioOfDone:ratioOfDone})
+      dayArr.push({
+        type:"day", 
+        day: i, 
+        month: props.monthNumber, 
+        year:props.yearNumber, 
+        todolength:todolength, 
+        numberOfChecked:numberOfChecked, 
+        ratioOfDone:ratioOfDone})
       } 
     
     //filling up with blanks before the first day 
@@ -36,28 +43,32 @@ export default function Day (props) {
         dayArr.push({type:"padding",})
       } 
     } 
-    console.log(dayArr)  
     return dayArr;
   }
 
-  const isCurrentMonth = props.monthNumber -1 === new Date().getMonth();
+  // const isCurrentMonth = props.monthNumber -1 === new Date().getMonth();
   const showDays=
   createDayArr().map((day, index)=>{
     const condition = day.ratioOfDone >= 0.8 ? 'eighty' : 
-                      day.ratioOfDone >= 0.6 ? 'sixty' : 
-                      day.ratioOfDone >= 0.4 ? 'fourty' : 
-                      day.ratioOfDone >= 0.2 ? 'twenty' : 
-                      "zero";   
+    day.ratioOfDone >= 0.6 ? 'sixty' : 
+    day.ratioOfDone >= 0.4 ? 'fourty' : 
+    day.ratioOfDone >= 0.2 ? 'twenty' : 
+    "zero";   
     const todolength = day.todolength
     const checked = day.numberOfChecked
+
     if (day.type === "day") {
       return (
         <Link 
-          to={`/todo/${day.date}/${props.monthNumber}/${props.yearNumber}`} className={`${"aDay"} 
-          ${(day.date === props.currentDay && isCurrentMonth) && "currentDay"}
+          to={`/todo/${day.day}/${props.monthNumber}/${props.yearNumber}`} className={`${"aDay"} 
+          ${(
+            day.day === props.currentDay && 
+            day.month === props.currentMonth &&
+            day.year === props.currentYear) 
+            && "currentDay"}
           ${condition}`} 
           key={index}>
-            <div className='date'>{day.date}</div>
+            <div className='date'>{day.day}</div>
             {todolength !== 0 && 
             <div className='done'>
               <img src={done} />

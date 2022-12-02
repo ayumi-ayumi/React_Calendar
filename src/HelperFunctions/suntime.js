@@ -4,7 +4,6 @@ function sunrise(sunsetSunriseTime) {
   const sunriseMinute = sunriseTimeToday.getMinutes().toString().padStart(2, '0');
   const sunriseTime = sunriseHour + ":" + sunriseMinute
   
-  console.log(sunriseMinute)
   return sunriseTime
 }
 
