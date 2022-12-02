@@ -1,4 +1,4 @@
-*{
+* {
   box-sizing: border-box;
 }
 
@@ -7,10 +7,10 @@ body {
   background-color: #fffde9;
   font-family: "Montserrat", sans-serif;
 
-  @media(max-width: 480px) {
+  @media (max-width: 480px) {
     margin: 20px;
   }
-  @media(min-width: 960px) {
+  @media (min-width: 960px) {
     margin: 50px 120px;
   }
 }
@@ -40,7 +40,7 @@ body {
   font-size: 1.3rem;
 }
 
-.month:hover + button{
+.month:hover + button {
   background-color: red;
 }
 
@@ -72,10 +72,16 @@ button img:active {
 }
 
 .button--today {
-  background-color: bisque;
+  background-color: rgb(144 202 249 / 76%);
   padding: 5px;
   border-radius: 5px;
-  border: 1px solid;
   display: flex;
-  margin: 5px auto;
+  margin: 5px auto 20px;
+  border: 1px solid #afacac;
+}
+
+.button--today:hover {
+  background-color: rgba(187, 221, 249, 0.76);
+  border-radius: 20px;
+  transition: 0.3s;
 }
