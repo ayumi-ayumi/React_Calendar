@@ -1,6 +1,7 @@
 {
   "name": "react_calendar",
   "version": "0.1.0",
+  "homepage": "https://ayumi-ayumi.github.io/React_Calendar/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -19,7 +20,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -b master -d build"
   },
   "eslintConfig": {
     "extends": [

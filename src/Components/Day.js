@@ -46,7 +46,6 @@ export default function Day (props) {
     return dayArr;
   }
 
-  // const isCurrentMonth = props.monthNumber -1 === new Date().getMonth();
   const showDays=
   createDayArr().map((day, index)=>{
     const condition = day.ratioOfDone >= 0.8 ? 'eighty' : 
