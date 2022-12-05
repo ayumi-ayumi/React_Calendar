@@ -11,7 +11,7 @@ body {
     margin: 20px;
   }
   @media (min-width: 960px) {
-    margin: 50px 120px;
+    margin: 30px 120px;
   }
 }
 
@@ -28,7 +28,7 @@ body {
 }
 
 .button--month {
-  height: 60px;
+  height: 50px;
   display: flex;
   justify-content: center;
 }
@@ -36,7 +36,7 @@ body {
 .month {
   width: 130px;
   text-align: center;
-  line-height: 60px;
+  line-height: 50px;
   font-size: 1.3rem;
 }
 
@@ -46,7 +46,7 @@ body {
 
 .year {
   text-align: center;
-  line-height: 60px;
+  line-height: 50px;
   font-size: 1.3rem;
 }
 
@@ -76,7 +76,7 @@ button img:active {
   padding: 5px;
   border-radius: 5px;
   display: flex;
-  margin: 5px auto 20px;
+  margin: 0 auto 10px;
   border: 1px solid #afacac;
 }
 

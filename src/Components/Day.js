@@ -1,6 +1,6 @@
 import React from 'react'
 import '../Sass/styles.scss'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import done from '../images/icons8-ok-48.png'
 import notDone from '../images/icons8-cancel-48.png'
 

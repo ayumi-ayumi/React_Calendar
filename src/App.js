@@ -1,6 +1,5 @@
-import './App.css'
 import Calendar from './Components/Calendar'
-import {Route, RouterProvider, Routes, createBrowserRouter, useParams } from 'react-router-dom'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Todo from './Components/Todo'
 import Article from './Components/Article'
 import Notfound from './Components/Notfound'

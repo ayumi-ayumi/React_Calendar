@@ -43,6 +43,5 @@
     "gh-pages": "^4.0.0",
     "jest": "^27.5.1",
     "react-router-dom": "^6.4.2"
-  },
-  "homepage": "https://ayumi-ayumi.github.io/React_Calendar/"
+  }
 }
