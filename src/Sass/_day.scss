@@ -26,6 +26,11 @@ h2 {
   }
 }
 
+.aDay:hover {
+  // opacity: 0.7;
+  background-color: #bbbaba;
+  transition: 0.3s
+}
 .date {
   line-height: 20px;
   margin: 0 0 15px;
