@@ -1,7 +1,6 @@
 {
   "name": "react_calendar",
   "version": "0.1.0",
-  "homepage": "https://ayumi-ayumi.github.io/React_Calendar/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
