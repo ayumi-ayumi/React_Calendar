@@ -17,7 +17,7 @@ import React from 'react'
 const homeUrl = "https://ayumi-ayumi.github.io/React_Calendar/";
 
 const router = createBrowserRouter([
-  {path: homeUrl,
+  {path: '/',
   element: (<Calendar />),
   errorElement: (<Notfound />)
   },
@@ -26,9 +26,6 @@ const router = createBrowserRouter([
   },
   {path:'/article/:number',
   element: (<Article />)
-  },
-  {path:'*',
-  element:(<Notfound />)
   }
 ])
 
