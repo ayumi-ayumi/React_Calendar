@@ -55,11 +55,14 @@ export default function Day (props) {
     "zero";   
     const todolength = day.todolength
     const checked = day.numberOfChecked
+    const homeUrl = process.env.PUBLIC_URL;
+
 
     if (day.type === "day") {
       return (
         <Link 
-          to={`/todo/${day.day}/${props.monthNumber}/${props.yearNumber}`} className={`${"aDay"} 
+          to={`${homeUrl}/todo/${day.day}/${props.monthNumber}/${props.yearNumber}`} 
+          className={`${"aDay"} 
           ${(
             day.day === props.currentDay && 
             day.month === props.currentMonth &&
