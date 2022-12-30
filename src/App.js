@@ -14,17 +14,17 @@ import React from 'react'
 //   )
 // }
 
-const homeUrl = "https://ayumi-ayumi.github.io/React_Calendar/";
+const homeUrl = process.env.PUBLIC_URL;
 
 const router = createBrowserRouter([
   {path: homeUrl,
   element: (<Calendar />),
   errorElement: (<Notfound />)
   },
-  {path:'/todo/:date/:month/:year',
+  {path: homeUrl+'/todo/:date/:month/:year',
   element: (<Todo />)
   },
-  {path:'/article/:number',
+  {path: homeUrl+'/article/:number',
   element: (<Article />)
   }
 ])
