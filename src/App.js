@@ -26,6 +26,9 @@ const router = createBrowserRouter([
   },
   {path:'/article/:number',
   element: (<Article />)
+  },
+  {path:'*',
+  element:(<Notfound />)
   }
 ])
 
