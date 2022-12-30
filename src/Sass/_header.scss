@@ -1,0 +1,87 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 50px;
+  background-color: #fffde9;
+  font-family: "Montserrat", sans-serif;
+
+  @media (max-width: 480px) {
+    margin: 20px;
+  }
+  @media (min-width: 960px) {
+    margin: 30px 120px;
+  }
+}
+
+.suntime {
+  height: 30px;
+}
+
+.suntime p {
+  display: inline-block;
+  line-height: 30px;
+  margin: 0 6px;
+  height: 30px;
+  vertical-align: top;
+}
+
+.button--month {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.month {
+  width: 130px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 1.3rem;
+}
+
+.month:hover + button {
+  background-color: red;
+}
+
+.year {
+  text-align: center;
+  line-height: 50px;
+  font-size: 1.3rem;
+}
+
+button {
+  margin: 0 10px;
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+}
+
+button img {
+  height: 60%;
+}
+
+button img:hover {
+  background-color: #ade2dd4d;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+button img:active {
+  background-color: rgba(240, 248, 255, 0.496);
+}
+
+.button--today {
+  background-color: rgb(144 202 249 / 76%);
+  padding: 5px;
+  border-radius: 5px;
+  display: flex;
+  margin: 0 auto 10px;
+  border: 1px solid #afacac;
+}
+
+.button--today:hover {
+  background-color: rgba(187, 221, 249, 0.76);
+  border-radius: 20px;
+  transition: 0.3s;
+}

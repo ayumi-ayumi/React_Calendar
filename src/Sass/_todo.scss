@@ -1,0 +1,269 @@
+.main--todo {
+  margin: 0 30px;
+  
+  @media(max-width: 790px) {
+    margin: 0;
+  }
+
+  @media(min-width: 1000px) {
+    margin: 0 100px;
+  }
+}
+
+.backToHome {
+  background-color: #90caf9c2;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 50px;
+  border: 1px solid #afacac;
+  color: #fff;
+
+  @media(max-width: 480px) {
+    font-size: 0.7rem;
+  }
+}
+
+.backToHome:hover {
+  background-color: #b4c7d675;
+  transition: 0.3s;
+}
+
+.header--todo {
+  display: flex;
+  gap: 20px;
+  height: 40px;
+  line-height: 40px;
+  width: 80%;
+  margin: 30px auto;
+  
+  @media(max-width: 650px) {
+    width: 100%;
+  }
+}
+
+h1 {
+  margin: 0;
+  
+  @media(max-width: 480px) {
+    font-size: 1.2rem;
+  }
+}
+
+.header--todo div {
+  font-size: 1.5rem;
+
+  @media(max-width: 480px) {
+    font-size: 1.2rem;
+  }
+}
+
+.body--todo {
+  margin: 0 auto;
+  width: 80%;
+
+  @media(max-width: 650px) {
+    width: 100%;
+  }
+}
+
+.showingTotal {
+  display: flex;
+  justify-content: center;
+  border: 2px ridge;
+  margin: 0 auto 20px;
+  width: 80%;
+  padding: 6px;
+  height: 40px;
+  @media(max-width: 480px) {
+    padding: 8px;
+  }
+}
+
+.showingTotal--number {
+  line-height: 24px;
+
+  @media(max-width: 480px) {
+    font-size: 0.8rem;
+  }
+}
+
+.numberOfChecked,
+.numberOfNotChecked {
+  margin: 0 5px;
+  line-height: 24px;
+  
+  @media(max-width: 480px) {
+    line-height: 20px;
+    // margin-right: 3px;
+  }
+}
+
+.numberOfChecked img,
+.numberOfNotChecked img {
+  height: 24px;
+  margin-right: 3px;
+  
+  @media(max-width: 480px) {
+    height: 20px;
+    // margin-right: 3px;
+  }
+}
+
+.numberOfChecked span,
+.numberOfNotChecked span {
+  display: inline-block;
+  vertical-align: top;
+
+  @media(max-width: 480px) {
+    font-size: 0.8rem;
+  }
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+form {
+  height: 40px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.form--addList {
+  width: 83%;
+  height: 40px;
+  font-size: 18px;
+  font-family: "Montserrat", sans-serif;
+  
+  @media(max-width: 480px) {
+    width: 80%;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+  @media(max-width: 790px) {
+    width: 75%;
+  }
+}
+
+.button--add {
+  background-color: rgba(46, 196, 182, 0.8588235294);
+  height: 40px;
+  padding: 12px;
+  border-radius: 3px;
+  border: 1px solid #afacac;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+  
+  @media(max-width: 480px) {
+    height: 35px;
+    font-size: 0.9rem;
+    padding: 7px;
+    font-weight: 500;
+  }
+}
+
+.button--add:hover {
+  background-color: #011614;
+  transition: 0.3s;
+}
+
+.button--clearLists {
+  background-color: #fa8072ad;
+  height: 35px;
+  width: 20%;
+  padding: 12px;
+  line-height: 12px;
+  border-radius: 3px;
+  border: 1px solid #afacac;
+  font-weight: 900;
+  margin: 20px 0;
+  color: #fff;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  background-color: #ffffffdb;
+  height: 40px;
+  font-size: 18px;
+  // line-height: 18px;
+  border-radius: 3px;
+  border: 1px solid #afacac;
+  margin: 0 auto 5px;
+}
+
+.material-symbols-outlined {
+  height: 40px;
+  line-height: 40px;
+  cursor: pointer;
+}
+
+.editingText {
+  height: 35px;
+  font-size: 18px;
+  margin: 2px;
+}
+
+input[type="text"]:focus {
+  border-color: dodgerBlue;
+  box-shadow: 0 0 8px 0 dodgerBlue;
+  transition: 0.3s;
+}
+
+input[type="checkbox"]:checked + label {
+  text-decoration: line-through 3px;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"] + label {
+  display: block;
+  position: relative;
+  padding-left: 40px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  line-height: 40px;
+}
+
+input[type="checkbox"] + label:last-child {
+  margin-bottom: 0;
+}
+
+input[type="checkbox"] + label:before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #6cc0e5;
+  position: absolute;
+  left: 6px;
+  top: 9px;
+  opacity: 0.6;
+  -webkit-transition: all 0.12s, border-color 0.08s;
+  transition: all 0.12s, border-color 0.08s;
+}
+
+input[type="checkbox"]:checked + label:before {
+  width: 10px;
+  top: 3px;
+  left: 12px;
+  border-radius: 0;
+  opacity: 1;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
