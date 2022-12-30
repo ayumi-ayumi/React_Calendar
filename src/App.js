@@ -14,8 +14,10 @@ import React from 'react'
 //   )
 // }
 
+const homeUrl = process.env.PUBLIC_URL;
+
 const router = createBrowserRouter([
-  {path:'/',
+  {path:{homeUrl},
   element: (<Calendar />),
   errorElement: (<Notfound />)
   },
