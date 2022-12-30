@@ -81,10 +81,12 @@ export default function Todo() {
   const listLength = todoListArr.length
   const numberOfChecked = todoListArr ? todoListArr.filter(todo => todo.checked).length : 0
   const numberOfNotChecked = listLength - numberOfChecked
+  const homeUrl = process.env.PUBLIC_URL;
+
 
   return (
     <>
-      <Link to={'/'} 
+      <Link to={`${homeUrl}/`} 
       state={{ month: monthInt-1, year:  yearInt}} 
       className="backToHome">Back to Calendar</Link>
       <div className='main--todo'>
