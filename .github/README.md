@@ -2,7 +2,7 @@
 This is the final project for the advenced web development in Frauenloop.
 
 This App is Calendar and Todo list for someone who learns programming. <br>
-It shows what your todo list for a day and you can tell how much tasks you have done.
+It shows what your todo list for a day and you can see how much tasks you have done.
 
 ### Skills Demonstrated: 
 - react: hooks, props
@@ -22,20 +22,6 @@ It shows what your todo list for a day and you can tell how much tasks you have 
 * [![React][React.js]][React-url]
 
 
-<!-- GETTING STARTED -->
-## Getting Started
-
-### Installation
-```
-$ git clone https://github.com/ayumi-ayumi/React_Calendar.git
-$ cd PROJECT
-$ npm install
-```
-
-### Start&Watch
-```
-$ npm start
-```
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
