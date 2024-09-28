@@ -4,6 +4,11 @@ This is the final project for the advenced web development in Frauenloop.
 This App is Calendar and Todo list for someone who learns programming. <br>
 It shows what your todo list for a day and you can see how much tasks you have done.
 
+![スクリーンショット 2024-09-28 23 10 27](https://github.com/user-attachments/assets/b9690718-6588-47d5-ba7a-6c5641385c44)
+
+![スクリーンショット 2024-09-28 23 10 13](https://github.com/user-attachments/assets/9310f4c0-6ad4-4eee-93d8-a11789f678fc)
+
+
 ### Skills Demonstrated: 
 - react: hooks, props
 - javascript: axios api fetch 
@@ -11,7 +16,7 @@ It shows what your todo list for a day and you can see how much tasks you have d
 - HTML / CSS - bootstrap
 
 <p align="center">
-<a href="https://github.com/ayumi-ayumi/React_Calendar">View Demo</a>
+<a href="https://ayumi-ayumi.github.io/React_Calendar/">View Demo</a>
 </p>
 
 ### Built With
@@ -20,6 +25,9 @@ It shows what your todo list for a day and you can see how much tasks you have d
 * ![Sass]
 * ![JavaScript]
 * [![React][React.js]][React-url]
+
+
+
 
 
 
